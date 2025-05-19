@@ -1,12 +1,21 @@
 # AP-ERP-Analyzer-BE
 
-Backend para análisis de datos ERP.
+**Backend para la visualización de indicadores clave (KPIs) en sistemas ERP**
 
-# Copyright 2025 Anti-Patrones
-# This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
-# http://creativecommons.org/licenses/by-sa/4.0/
+> Proyecto desarrollado durante la Hackathon 2025 — Reto: Visualización de indicadores clave para la gestión empresarial en plataformas ERP.
 
-## Estructura
+## 🧠 Propósito del proyecto
+
+Este backend está diseñado para apoyar a pequeñas y medianas empresas que utilizan sistemas ERP, permitiéndoles transformar grandes volúmenes de datos operativos, administrativos y contables en información comprensible para la toma de decisiones. Se enfoca en procesar datasets estructurados y exponer endpoints REST para alimentar dashboards interactivos.
+
+## 📊 Objetivo del reto
+
+- Desarrollar un módulo funcional que permita la visualización dinámica de KPIs empresariales.
+- Proveer datos listos para ser visualizados en dashboards construidos con herramientas como Streamlit, Dash o Plotly.
+- Facilitar el análisis financiero, operativo y administrativo para usuarios no técnicos.
+- Utilizar datos simulados con estructura realista de ERP (facturas, inventario, nómina, egresos, etc.).
+
+## 🗂️ Estructura del proyecto
 
 ```
 AP-ERP-Analyzer-BE/
@@ -18,14 +27,19 @@ AP-ERP-Analyzer-BE/
 └── run.py
 ```
 
-## Requisitos
 
-- Python 3.12+
-- Flask, Pandas, NumPy
+## 🔧 Requisitos del sistema
 
-## Uso
+- Python 3.12 o superior
+- FastAPI
+- Pandas
+- NumPy
 
-Iniciar servidor:
+Instalación de dependencias:
+
+```bash
+pip install -r requirements.txt
+
 ```
 python run.py
 ```
