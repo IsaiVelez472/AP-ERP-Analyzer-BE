@@ -6,17 +6,16 @@ import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-# Importar rutas
-from app.routes.health import router as health_router
-from app.routes.accounting import router as accounting_router
+# Import routers
+from app.routers import financial_kpis, sales_analysis, accounts, expenses, ml_predictions
 
 def create_app(config_name='development'):
     """Crea y configura la aplicación FastAPI"""
     
     app = FastAPI(
         title="AP-ERP-Analyzer-BE",
-        description="API para análisis de datos ERP",
-        version="0.1.0"
+        description="API para análisis de datos ERP y visualización de KPIs",
+        version="1.0.0"
     )
     
     # Configurar CORS
@@ -28,8 +27,15 @@ def create_app(config_name='development'):
         allow_headers=["*"],
     )
     
-    # Registrar rutas
-    app.include_router(health_router)
-    app.include_router(accounting_router)
+    # Register routes
+    app.include_router(financial_kpis.router, prefix="/api/kpis/financial", tags=["Financial KPIs"])
+    app.include_router(sales_analysis.router, prefix="/api/kpis/sales", tags=["Sales Analysis"])
+    app.include_router(accounts.router, prefix="/api/kpis/accounts", tags=["Accounts Receivable/Payable"])
+    app.include_router(expenses.router, prefix="/api/kpis/expenses", tags=["Expenses Analysis"])
+    app.include_router(ml_predictions.router, prefix="/api/ml", tags=["ML Predictions"])
+    
+    @app.get("/", tags=["Root"])
+    async def root():
+        return {"message": "Welcome to the ERP Analyzer API"}
     
     return app
